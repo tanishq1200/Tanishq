@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hi, Kaveri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe6e6, #ffd6f7 80%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    #container {
+      background: #fff9fa;
+      padding: 36px 28px;
+      border-radius: 18px;
+      box-shadow: 0 6px 28px 0 #ffafd2cc;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+    button, .icon-envelope-btn {
+      background: linear-gradient(90deg, #fc67fa 20%, #ffd6e6 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 12px 0;
+      box-shadow: 0 4px 18px #ffafd299;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    button:hover, .icon-envelope-btn:hover, button:focus, .icon-envelope-btn:focus {
+      background: linear-gradient(90deg, #ff7eb3 20%, #ffc3a0 100%);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 8px 22px #ffafd2cc;
+      outline: none;
+    }
+    .icon-envelope-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 2px solid #ff69b4;
+      color: #ff69b4;
+      padding: 18px 40px 18px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      position: relative;
+      box-shadow: 0 10px 20px rgba(255,175,210,0.15);
+      margin-top: 20px;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .icon-envelope-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: #ff69b4;
+    }
+    .message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #c2185b;
+      background-color: #fff0f5;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.15);
+      display: inline-block;
+      max-width: 80%;
+      margin: 0 auto 16px;
+      transition: all 0.3s ease-in-out;
+    }
+    .message:hover {
+      background-color: #ffe4ec;
+      transform: scale(1.03);
+    }
+    .letter-box {
+      background: #fffef6;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        #fcf7ef 0px, #fcf7ef 30px, #ffd5bb 32px
+      );
+      border-radius: 15px;
+      box-shadow: 0 10px 34px rgba(205,178,147,0.18);
+      border: 2px solid #ffd5bb;
+      font-size: 1.1rem;
+      font-family: 'Georgia', serif;
+      line-height: 1.68;
+      text-align: left;
+      margin: 20px 0 0 0;
+      padding: 30px 40px;
+      position: relative;
+      min-height: 270px;
+      max-width: 96%;
+    }
+    .final-message {
+      font-size: 1.3rem;
+      color: #e91e63;
+      font-weight: bold;
+      margin-top: 30px;
+      text-align: center;
+    }
+    .screen {
+      display: none;
+    }
+    .screen.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="screen1" class="screen active">
+      <button onclick="showScreen(2)">Hi, Kaveri</button>
+    </div>
+    <div id="screen2" class="screen">
+      <div class="message">Btw, you are looking very cute today 😊</div>
+      <button onclick="showScreen(3)">click here</button>
+    </div>
+    <div id="screen3" class="screen">
+      <button onclick="showScreen(4)">Knock Knock</button>
+    </div>
+    <div id="screen4" class="screen">
+      <button onclick="showScreen(5)">Who's there?</button>
+    </div>
+    <div id="screen5" class="screen">
+      <button onclick="showScreen(6)">Howard</button>
+    </div>
+    <div id="screen6" class="screen">
+      <button onclick="showScreen(7)">Howard who?</button>
+    </div>
+    <div id="screen7" class="screen">
+      <div class="message">Howard you like to go on a third date with me?👉👈</div>
+      <button class="icon-envelope-btn" onclick="showScreen(8)">
+        <svg viewBox="0 0 32 32"><path d="M2.81 7.87A2 2 0 0 1 4 7h24a2 2 0 0 1 1.19.37l-13.3 12.46L2.81 7.87zM2 9.27v14A2.73 2.73 0 0 0 4.72 26h22.56A2.73 2.73 0 0 0 30 23.27v-14l-11.85 11.09a3 3 0 0 1-4.12 0L2 9.27z"></path></svg>
+        Would you please open this letter kavs
+      </button>
+    </div>
+    <div id="screen8" class="screen">
+      <div class="letter-box">
+  <pre style="white-space: pre-wrap; font-family: 'Georgia', serif; font-size: 1.05rem; line-height: 1.7;">
+Hi Khushi,
+
+Hiiii, I honestly don't know if it feels too much or not. But, the thing is we are not living nearby.
+Kaafi duur hai hum dono
+toh mai kaafi kuch nahi kar sakta tumhare saath, jaise naye naye cafes jaana, movie dates, kahi saath mai ghoomna, aur tumse aamne samne chize sahre karna, but I don't get to meet you often
+toh I made this, matlab, mera mann kiya toh I thought, ki baaki chize nahi kar sakta toh yahi kar leta hun.
+
+So, I am writing this letter to you. Kaveri, I am very glad that I got to meet you. I am glad that I sent you that "vanakkam" message, hehe.
+It's been 5 months that I have been talking to you. And, I really mean it when I say it that I have never met a person like you. From the things I have heard from you so far. The things I have noticed while talking to you. You are the kindest person, I have never experienced so much purity from a person. Sometimes, I look up at sky, and pray to god "ki iske saath kuch bura mat hone dena bhagwaan"
+
+Mujhe words nahi mil rahe to write what I feel, hehe. You have a very infectious smile Kaveri and when you share something with excitement, I get also get excited.
+Kuch chize hoti hai naa jo aap chaho ki kaash aisa ho jaaye and when that happens, you don't believe it ki "Kya? ye sahi mai ho gaya". I feel exactly the same ki "Kaveri really likes me? Wow!!"
+
+I have a lot of respect for you. You are the light that brightens up the dark room. And ye mai aise hi nahi bol raha, jitna bhi maine tumhari baatien sunii hai. Usse pata chal jaata hai, mera khud ka jab din thoda off hota hai, tumse baat karke accha ho jaata hai
+
+Jiase tum batati ho naa ki log bolte hai ki kuch bolti nahi ho kya. You know why? kyunki you have that energy ki logo ko tumse baat karne ka mann karta hai. Prime example - Me. 
+Your friends are truly blessed to have a friend like you. Your parents are truly blesssed to have daughter like you. Always remain like this kaveri.
+
+You have the energy to motivate people, you have that energy to bring out kindness out of people. Ummm...aur abhi kuch aur bhi hai but can't find words. Batata hun kabhi, jab I would be able to translate my thoughts
+
+P.S - I am not sure ki zyada laga ye tumhe yaa nahi, but I like to express my feeling to the people I like. So....I wrote this.
+
+– Tanishq 🌸
+  </pre>
+  <button style="display:block;margin:25px auto 0;" onclick="showScreen(9)">Click here</button>
+</div>
+
+    </div>
+    <div id="screen9" class="screen">
+      <div class="final-message">Hope you liked it 💖</div>
+    </div>
+  </div>
+
+  <script>
+    function showScreen(step) {
+      var screens = document.querySelectorAll('.screen');
+      screens.forEach(function(screen) {
+        screen.classList.remove('active');
+      });
+      document.getElementById('screen'+step).classList.add('active');
+      window.scrollTo(0, 0); // scroll to top
+    }
+  </script>
+</body>
+</html>
