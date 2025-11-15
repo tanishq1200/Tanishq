@@ -4,39 +4,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🎂 Happy Birthday!</title>
+  <title>💌 Birthday Letter</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="container">
-    <div class="balloons">
-      <div class="balloon">🎈</div>
-      <div class="balloon">🎈</div>
-      <div class="balloon">🎈</div>
-      <div class="balloon">🎈</div>
-      <div class="balloon">🎈</div>
-    </div>
-
-    <div class="card">
-      <h1><span class="sparkle">🎉 Happy Birthday</span> Kaveriiii!</h1>
-      <p class="lead">I made you a tiny surprise. Tap the envelope to open it.</p>
-
-      <div class="envelope-wrap">
-        <a href="video1.html" class="envelope" aria-label="Open the envelope" onclick="fireConfetti()">
-          <div class="body"></div>
-          <div class="flap"></div>
-          <div class="letter-peek">💌</div>
-          <div class="ribbon"></div>
-        </a>
+    <div class="paper">
+      <h1>💌 a birthday note</h1>
+      <div class="letter">Happy Birthday, beautiful soul 💖<br><br>On your day, I just want to remind you how easy you make it to smile.<br>You light up rooms, soften moments, and somehow make time feel kinder.<br><br>I hope this year brings you little surprises, big wins, and a ton of happy.<br>Thank you for being you — it’s my favorite thing.<br><br>— T<br></div>
+      <div class="nav" style="margin-top:18px;">
+        <a class="button" href="index.html">back to start</a>
       </div>
-
-      <p class="subtle">open me ✨</p>
     </div>
-    <div class="footer">Made for you</div>
   </main>
-
-  <script>
-    function fireConfetti(){ 
+  <script>(function(){
 // Minimal confetti using canvas (no dependencies)
 (function(){
   const duration = 1600;
@@ -75,7 +56,6 @@
   };
   tick();
 })();
- }
-  </script>
+})();</script>
 </body>
 </html>
