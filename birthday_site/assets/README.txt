@@ -1,1 +1,0 @@
-Add your birthday videos here named video1.mp4 and video2.mp4 (H.264/AAC recommended).
