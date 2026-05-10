@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Avantika ✦</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0e0e0e;
+      color: #e8e0d0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    #app {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 40px 20px;
+    }
+    .page.active { display: flex; }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      width: 1.5px;
+      height: 1.5px;
+      background: #c9a96e;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.2; }
+      100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+    }
+
+    /* PAGE 1 */
+    #page1 { text-align: center; position: relative; z-index: 1; }
+
+    .pre-text {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.5s forwards;
+    }
+    .birthday-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 300;
+      font-style: italic;
+      color: #9a8f7e;
+      opacity: 0;
+      animation: fadeUp 1s ease 1s forwards;
+      letter-spacing: 2px;
+      margin-top: 10px;
+    }
+    .main-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 12vw, 110px);
+      font-weight: 300;
+      line-height: 1;
+      color: #e8e0d0;
+      opacity: 0;
+      animation: fadeUp 1.2s ease 1.5s forwards;
+      margin: 8px 0 0;
+    }
+    .main-name em { color: #c9a96e; font-style: italic; }
+
+    .divider {
+      width: 60px;
+      height: 0.5px;
+      background: #c9a96e;
+      margin: 32px auto;
+      opacity: 0;
+      animation: expandWidth 1s ease 2.2s forwards;
+    }
+    @keyframes expandWidth {
+      from { width: 0; opacity: 0; }
+      to   { width: 60px; opacity: 0.6; }
+    }
+
+    .video-area {
+      width: 100%;
+      max-width: 560px;
+      opacity: 0;
+      animation: fadeUp 1s ease 2.8s forwards;
+    }
+    .video-frame {
+      width: 100%;
+      border: 0.5px solid rgba(201,169,110,0.3);
+      border-radius: 2px;
+      overflow: hidden;
+      background: #111;
+      position: relative;
+      aspect-ratio: 16/9;
+    }
+    #videoPlayer {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .btn-next {
+      margin-top: 40px;
+      padding: 14px 48px;
+      border: 0.5px solid rgba(201,169,110,0.5);
+      background: transparent;
+      color: #c9a96e;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      opacity: 0;
+      animation: fadeUp 1s ease 3.2s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-next::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(201,169,110,0.08);
+      transition: left 0.4s ease;
+    }
+    .btn-next:hover::before { left: 0; }
+    .btn-next:hover { border-color: rgba(201,169,110,0.9); letter-spacing: 6px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Page transition curtain */
+    .page-transition {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #0e0e0e;
+      z-index: 100;
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+    .page-transition.entering { animation: curtainDown 0.7s ease forwards; pointer-events: all; }
+    .page-transition.leaving  { animation: curtainUp   0.7s ease 0.7s forwards; }
+    @keyframes curtainDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+    @keyframes curtainUp   { from { transform: translateY(0); }    to { transform: translateY(100%); } }
+
+    /* PAGE 2 — Gift box */
+    #page2 { position: relative; z-index: 1; }
+
+    .gift-scene {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+    }
+    .gift-scene:hover .box-lid { transform: translateY(-4px) rotate(-1deg); }
+    .gift-scene:hover .bow-wrap { transform: translateX(-50%) translateY(-5px); }
+    .gift-scene:hover .open-it-text { color: rgba(201,169,110,1); }
+
+    .lid-wrapper { position: relative; width: 180px; z-index: 2; }
+
+    .box-lid {
+      width: 196px;
+      height: 40px;
+      background: #1a1510;
+      border: 0.5px solid rgba(201,169,110,0.4);
+      margin-left: -8px;
+      position: relative;
+      transition: transform 0.5s ease;
+      border-radius: 1px;
+    }
+    .ribbon-lid-h {
+      position: absolute; top: 50%; left: 0;
+      width: 100%; height: 10px;
+      background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.2) 20%, rgba(201,169,110,0.6) 50%, rgba(201,169,110,0.2) 80%, transparent 100%);
+      transform: translateY(-50%);
+      border-top: 0.5px solid rgba(201,169,110,0.4);
+      border-bottom: 0.5px solid rgba(201,169,110,0.4);
+    }
+    .ribbon-lid-v {
+      position: absolute; top: 0; left: 50%;
+      width: 10px; height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(201,169,110,0.6) 50%, transparent 100%);
+      transform: translateX(-50%);
+      border-left: 0.5px solid rgba(201,169,110,0.4);
+      border-right: 0.5px solid rgba(201,169,110,0.4);
+    }
+
+    .bow-wrap {
+      position: absolute;
+      top: -30px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      transition: transform 0.5s ease;
+    }
+    .bow { width: 60px; height: 30px; position: relative; display: flex; align-items: center; justify-content: center; }
+    .bow-left, .bow-right { width: 26px; height: 20px; border: 1.5px solid #c9a96e; border-radius: 50%; position: absolute; top: 2px; }
+    .bow-left  { left: 2px;  transform: rotate(-35deg); border-right-color: transparent; }
+    .bow-right { right: 2px; transform: rotate(35deg);  border-left-color:  transparent; }
+    .bow-center { width: 10px; height: 10px; background: #c9a96e; border-radius: 50%; position: relative; z-index: 1; }
+    .bow-tail-left, .bow-tail-right { position: absolute; bottom: -8px; width: 16px; height: 12px; border: 1px solid rgba(201,169,110,0.6); border-top: none; border-radius: 0 0 8px 8px; }
+    .bow-tail-left  { left: 24px;  transform: rotate(10deg); }
+    .bow-tail-right { right: 24px; transform: rotate(-10deg); }
+
+    .box-body {
+      width: 180px; height: 180px;
+      background: #141210;
+      border: 0.5px solid rgba(201,169,110,0.3);
+      position: relative;
+      border-radius: 1px;
+    }
+    .ribbon-body-h {
+      position: absolute; top: 50%; left: 0;
+      width: 100%; height: 10px;
+      background: linear-gradient(90deg, transparent 0%, rgba(201,169,110,0.15) 20%, rgba(201,169,110,0.5) 50%, rgba(201,169,110,0.15) 80%, transparent 100%);
+      transform: translateY(-50%);
+      border-top: 0.5px solid rgba(201,169,110,0.35);
+      border-bottom: 0.5px solid rgba(201,169,110,0.35);
+    }
+    .ribbon-body-v {
+      position: absolute; top: 0; left: 50%;
+      width: 10px; height: 100%;
+      background: linear-gradient(180deg, transparent 0%, rgba(201,169,110,0.5) 50%, transparent 100%);
+      transform: translateX(-50%);
+      border-left: 0.5px solid rgba(201,169,110,0.35);
+      border-right: 0.5px solid rgba(201,169,110,0.35);
+    }
+    .open-it-text {
+      position: absolute; bottom: 24px; width: 100%;
+      text-align: center; font-size: 9px; letter-spacing: 4px;
+      text-transform: uppercase; color: rgba(201,169,110,0.5);
+      font-family: 'Montserrat', sans-serif; transition: color 0.3s;
+    }
+    .gift-label {
+      margin-top: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-style: italic;
+      color: #6a6258; letter-spacing: 2px; text-align: center;
+    }
+
+    /* Opening animation */
+    .gift-scene.opening .box-lid  { animation: lidFly 1.2s ease forwards; }
+    .gift-scene.opening .bow-wrap { animation: bowFly 1.2s ease forwards; }
+    @keyframes lidFly {
+      0%   { transform: translateY(0) rotate(0); }
+      30%  { transform: translateY(-60px) rotate(-8deg) scale(1.05); }
+      100% { transform: translateY(-120px) rotate(-20deg) scale(0.8); opacity: 0; }
+    }
+    @keyframes bowFly {
+      0%   { transform: translateX(-50%) translateY(0); }
+      100% { transform: translateX(-50%) translateY(-150px) rotate(15deg); opacity: 0; }
+    }
+    .gift-scene.opening .ribbon-body-h,
+    .gift-scene.opening .ribbon-body-v,
+    .gift-scene.opening .ribbon-lid-h,
+    .gift-scene.opening .ribbon-lid-v { animation: ribbonFade 0.8s ease 0.3s forwards; }
+    @keyframes ribbonFade { to { opacity: 0; } }
+
+    /* PAGE 3 — Letter */
+    #page3 { position: relative; z-index: 1; padding: 60px 20px; }
+
+    .envelope-wrap { width: 100%; max-width: 620px; margin: 0 auto; }
+
+    .letter-card {
+      background: #0f0d0b;
+      border: 0.5px solid rgba(201,169,110,0.25);
+      padding: 56px 52px;
+      position: relative;
+      border-radius: 1px;
+      animation: letterReveal 1s ease 0.3s both;
+    }
+    @keyframes letterReveal {
+      from { opacity: 0; transform: scale(0.93) translateY(30px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .letter-card::before {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px; right: 20px; bottom: 20px;
+      border: 0.5px solid rgba(201,169,110,0.08);
+      pointer-events: none;
+    }
+    .letter-monogram {
+      text-align: center; margin-bottom: 40px;
+      color: #c9a96e; font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 300; opacity: 0.4; letter-spacing: 12px;
+    }
+    .letter-divider {
+      width: 100%; height: 0.5px;
+      background: linear-gradient(90deg, transparent, rgba(201,169,110,0.3), transparent);
+    }
+    .letter-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px; font-weight: 300;
+      line-height: 2; color: #c8bfb0;
+      white-space: pre-wrap; font-style: italic;
+      margin: 36px 0;
+    }
+    .letter-sign {
+      text-align: right;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-style: italic;
+      color: #c9a96e; opacity: 0.7; font-weight: 300;
+      margin-top: 28px;
+    }
+
+    .controls {
+      display: flex; justify-content: center;
+      gap: 16px; margin-top: 32px;
+    }
+    .ctrl-btn {
+      padding: 10px 28px;
+      border: 0.5px solid rgba(201,169,110,0.3);
+      background: transparent; color: #c9a96e;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .ctrl-btn:hover { border-color: rgba(201,169,110,0.7); background: rgba(201,169,110,0.05); }
+
+    @media (max-width: 480px) {
+      .letter-card { padding: 36px 24px; }
+      .letter-body { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div class="particles" id="particles"></div>
+  <div class="page-transition" id="curtain"></div>
+
+  <!-- PAGE 1 — Birthday -->
+  <div class="page active" id="page1">
+    <p class="pre-text">wishing you</p>
+    <p class="birthday-sub">a very happy birthday</p>
+    <h1 class="main-name"><em>Avantika</em></h1>
+    <div class="divider"></div>
+
+    <div class="video-area">
+      <div class="video-frame">
+        <video id="videoPlayer" controls playsinline>
+          <source src="avantika_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <button class="btn-next" id="btnToGift">Continue →</button>
+  </div>
+
+  <!-- PAGE 2 — Gift box -->
+  <div class="page" id="page2">
+    <div class="gift-scene" id="giftScene">
+      <div class="lid-wrapper">
+        <div class="bow-wrap">
+          <div class="bow">
+            <div class="bow-left"></div>
+            <div class="bow-right"></div>
+            <div class="bow-center"></div>
+            <div class="bow-tail-left"></div>
+            <div class="bow-tail-right"></div>
+          </div>
+        </div>
+        <div class="box-lid">
+          <div class="ribbon-lid-h"></div>
+          <div class="ribbon-lid-v"></div>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="ribbon-body-h"></div>
+        <div class="ribbon-body-v"></div>
+        <div class="open-it-text">open it</div>
+      </div>
+    </div>
+    <p class="gift-label">something for you</p>
+  </div>
+
+  <!-- PAGE 3 — Letter -->
+  <div class="page" id="page3">
+    <div class="envelope-wrap">
+      <div class="letter-card">
+        <div class="letter-monogram">✦</div>
+        <div class="letter-divider"></div>
+        <div class="letter-body">Hi Avantika,
+
+Happy birthdayyyy ❤️ I wish all good things come your way. Jo tu chahe, wo tujhe mile. Badiya ladki hai, talented bhi hai. I really wish you don't have to go through any shit again. Ab bas abundance of happiness ho.
+
+11th May hai aaj, toh tere se match April's fool toh nahi tha 🤣. But haan, you have great energy. Jo mujh jaise ko comfortable kar de, kuch toh baat hogi usme 🤣 Plus, you have a very infectious smile. Idk daant dikhate hue smile ki photo kyun nahi kheechwati, but mujhe toh badiya lagti hai 😗
+
+Baaki toh ab 27 ki ho gayi, but mai 2 saal se pehle shaadi nahi kar sakta, toh tujhe wait karna padega 2 saal 😛
+
+Abhi I have just started to know you, toh can't type much. But all in all, you deserve the world and all the happiness. Enjoy your day, masti kar, masti mein reh.
+
+And haan, double chin ke baare mein zyada mat soch, mujhe nahi dikhti teri double chin, GUPPU 😛
+
+Again, I wish you a very happy birthday, bebe ❤️</div>
+        <div class="letter-divider"></div>
+        <div class="letter-sign">— Tanishq</div>
+      </div>
+      <div class="controls">
+        <button class="ctrl-btn" id="btnBack">← back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+
+  // Floating particles
+  const pContainer = $('particles');
+  for (let i = 0; i < 35; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = [
+      'left:' + (Math.random() * 100) + '%',
+      'width:' + (Math.random() < 0.5 ? 1.5 : 2.5) + 'px',
+      'height:' + (Math.random() < 0.5 ? 1.5 : 2.5) + 'px',
+      'animation-delay:' + (Math.random() * 14) + 's',
+      'animation-duration:' + (8 + Math.random() * 10) + 's'
+    ].join(';');
+    pContainer.appendChild(p);
+  }
+
+  // Page transitions
+  function goTo(targetId) {
+    const curtain = $('curtain');
+    curtain.className = 'page-transition entering';
+    setTimeout(() => {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      $(targetId).classList.add('active');
+      window.scrollTo(0, 0);
+      curtain.className = 'page-transition leaving';
+    }, 700);
+  }
+
+  $('btnToGift').addEventListener('click', () => goTo('page2'));
+
+  // Gift box open
+  $('giftScene').addEventListener('click', function () {
+    if (this.classList.contains('opening')) return;
+    this.classList.add('opening');
+    setTimeout(() => goTo('page3'), 1400);
+  });
+
+  $('btnBack').addEventListener('click', () => goTo('page2'));
+</script>
+
+</body>
+</html>
