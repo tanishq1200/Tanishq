@@ -33,8 +33,11 @@
       justify-content: center;
       flex-direction: column;
       padding: 40px 20px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
     .page.active { display: flex; }
+    #page1 { opacity: 1; }
 
     /* Particles */
     .particles {
@@ -419,11 +422,11 @@
         <div class="letter-divider"></div>
         <div class="letter-body">Hi Avantika,
 
-Happy birthdayyyy ❤️ I wish all good things come your way. Jo tu chahe, wo tujhe mile. Badiya ladki hai, talented bhi hai. I really wish you don't have to go through any shit again. Ab bas abundance of happiness ho.
+Happy birthdayyyy ❤️ I wish all good things come your way. Jo tu chahe, wo tujhe mile. Bhadiya ladki hai, talented bhi hai. I really wish you don't have to go through any shit again. Ab bas abundance of happiness ho.
 
 11th May hai aaj, toh tere se match April's fool toh nahi tha 🤣. But haan, you have great energy. Jo mujh jaise ko comfortable kar de, kuch toh baat hogi usme 🤣 Plus, you have a very infectious smile. Idk daant dikhate hue smile ki photo kyun nahi kheechwati, but mujhe toh badiya lagti hai 😗
 
-Baaki toh ab 27 ki ho gayi, but mai 2 saal se pehle shaadi nahi kar sakta, toh tujhe wait karna padega 2 saal 😛
+Baaki toh ab 27 ki ho gayi, but main 2 saal se pehle shaadi nahi kar sakta, toh tujhe wait karna padega 2 saal 😛
 
 Abhi I have just started to know you, toh can't type much. But all in all, you deserve the world and all the happiness. Enjoy your day, masti kar, masti mein reh.
 
@@ -463,10 +466,17 @@ Again, I wish you a very happy birthday, bebe ❤️</div>
     const curtain = $('curtain');
     curtain.className = 'page-transition entering';
     setTimeout(() => {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      $(targetId).classList.add('active');
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+        p.style.opacity = '0';
+      });
+      const target = $(targetId);
+      target.classList.add('active');
       window.scrollTo(0, 0);
       curtain.className = 'page-transition leaving';
+      setTimeout(() => {
+        target.style.opacity = '1';
+      }, 750);
     }, 700);
   }
 
@@ -479,7 +489,12 @@ Again, I wish you a very happy birthday, bebe ❤️</div>
     setTimeout(() => goTo('page3'), 1400);
   });
 
-  $('btnBack').addEventListener('click', () => goTo('page2'));
+  $('btnBack').addEventListener('click', () => {
+    const gift = $('giftScene');
+    gift.classList.remove('opening');
+    void gift.offsetWidth;
+    goTo('page2');
+  });
 </script>
 
 </body>
